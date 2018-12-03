@@ -1,2 +1,6 @@
 # LOL-Sec-Collection
-LOL Team's Security Stuff Collecion
+Security Stuff
+
+**Contents**
+ - [Cheatsheets](https://github.com/LunaM00n/LOL-Sec-Collection/tree/master/Cheatsheets)
+
