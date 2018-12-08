@@ -10,7 +10,8 @@ CS642 ကိုေလ့လာရင္း Notes ျပန္ထုတ္ထာ�
 
 **Contents**
 
- - [Introduction](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/00.Introduction.md)
- - coming soon
+ 1. [Introduction](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/00.Introduction.md)
+ 2. [OS Security](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/01.OS%20Security.md)
+
 
 
