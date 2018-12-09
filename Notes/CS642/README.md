@@ -1,3 +1,4 @@
+
 ## CS642 : Introduction to Computer Security
 
  - [CS642 Main Page](http://pages.cs.wisc.edu/~ace/cs642-spring-2016.html)
@@ -12,6 +13,9 @@ CS642 ကိုေလ့လာရင္း Notes ျပန္ထုတ္ထာ�
 
  1. [Introduction](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/00.Introduction.md)
  2. [OS Security](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/01.OS%20Security.md)
+ 3. [x86 Review](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/CS642/Notes/02.x86%20Review.md)
 
+***
+*thanks to the internet* - thinbashane
 
 
