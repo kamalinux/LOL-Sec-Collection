@@ -8,7 +8,7 @@
 
 | No. |Title| Short Description | Link |
 |--|--|--|--|
-| 1 | lol | legion of lol | :paperclip: click :paperclip: |
+| 1 | php functions | php dangerous functions | :paperclip: [click](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/websec/notes/php_dangerous_functions.md) :paperclip: |
 
 
 
