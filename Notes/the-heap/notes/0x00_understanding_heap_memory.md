@@ -1,11 +1,14 @@
-## understanding heap memory
+## Heap Overview
+> Understanding heap memory  
+:syringe: Learned and noted for everyone :syringe:
 
-**Overview**
+**:alien: Introduction & Implementation :alien:**
 
  - dynamic memory allocations at runtime
  - everyone uses the heap ( dynamic memory ) but few usally know much about its internals
+ - grow toward higher memory address
 
-**:white_circle: Implementations :white_circle:**
+Implementation
  
   - malloc() - grabs memory on the heap
   - free() - releases memory on the heap
@@ -18,9 +21,6 @@
 
 > some applications even create their own heap implementations!
 
- - 
-
-**:heavy_plus_sign: Memory Layout :heavy_plus_sign:**
 
 **:chart: Pseudo memory map :chart:**
 
@@ -35,13 +35,12 @@
 ------------stack------------------------- *0xbfff0000 - top of stack*    
 +-----------------------------------------+  *0xffffffff - end of memory*  
 
-Heap allocation
+**:chart: Heap allocation :chart:**
 
  [ heap ] --> heap segment [ chunk1, chunk2, chunk3 ] 
  
-  - grow toward higher memory address
  
-**:black_circle: Basics of dynamic memory :black_circle:**
+**:notebook: Basic for dynamic memory allocation :notebook:**
 
 ```
 int main()
@@ -55,7 +54,7 @@ int main()
 }
 ```
 
- description of code
+:scroll: :scroll: :scroll: Definitions of code :scroll: :scroll: :scroll:
  
  - `char* buffer = NULL;` -> initialized a character data type pointer and start with null
  - `buffer = malloc(0x100);` -> allocate this buffer to dynamic memory with 0x100 bytes
@@ -82,7 +81,7 @@ int main()
 | malloc(20); | 24 bytes |
 | malloc(0); | 16 bytes |
 
-**sizes.c**
+**:pill: sizes.c :pill:**
 
  - compilation : `gcc -m32 -o sizes sizes.c`
 ```
@@ -104,7 +103,7 @@ int main()
 	return 0;
 }
 ```
- understanding sizes.c 
+:scroll: :scroll: :scroll: Definitions of code :scroll: :scroll: :scroll:
  
   - `unsigned int lengths[] = {32, 4, 20, 0, 64, 32, 32, 32, 32, 32};` -> creating interger arrays with 10 different values
   - `unsigned int * ptr[10];` -> creating 10 integer pointers
@@ -116,7 +115,7 @@ int main()
 	 - `for(i = 0; i < 9; i++)`
 	 - `printf("malloc(%2d) is at 0x%08x, %3d bytes to the next pointer\n",lengths[i],(unsigned int)ptr[i], (ptr[i+1]-ptr[i])*sizeof(unsigned int));`
 
-Result
+:hammer: :hammer: :hammer: Testing the program :hammer: :hammer: :hammer:
 
 ```
 root@local:~/Desktop/LunaMoon/heap# ./sizes
@@ -133,7 +132,8 @@ malloc(32) is at 0x5737e2b0,  48 bytes to the next pointer
 
  - `malloc(32)` -> allocated 32 bytes but actually allocated 48 bytes with extra 16 bytes 
 
-**:pager: Heap chunks :pager:**
+
+**:notebook: Heap Chunks :notebook:**
 
 ```
 unsigned int* buffer = NULL;
@@ -155,7 +155,7 @@ example
 	 - 0x02 is_mapped - *set if chunk was obtained with mmap()*
 	 - 0x03 non_main_arena - *set if chunk belongs to a thread areana*
 
-heap_chunks.c
+**:pill: heap_chunks.c :pill:**
 
  - comilation : `gcc -m32 -o heap_chunks heap_chunks.c`
 ```
@@ -188,13 +188,13 @@ int main()
     return 0;
 }
 ```
-understanding heap_chunks.c
+:scroll: :scroll: :scroll: Definitions of code :scroll: :scroll: :scroll:
 
  - created 15 integer pointers and an array with 15 different values
  - first loop -> allocated 15 chunks on the heap
  - second loop - > printing chunks using print_chunk function
 
-Result
+:hammer: :hammer: :hammer: Testing the program :hammer: :hammer: :hammer:
 
 ```
 root@local:~/Desktop/LunaMoon/heap# ./heap_chunks
@@ -237,9 +237,9 @@ freed chunk example
         [ 4 bytes - bk *(buffer+1) ]  
     +--------------------------------------------------------------+  
 
-[print_frees.c](https://github.com/RPISEC/MBE/blob/master/src/lecture/heap/print_frees.c)
+[**:pill: print_frees.c :pill:**](https://github.com/RPISEC/MBE/blob/master/src/lecture/heap/print_frees.c)
 
-result
+:hammer: :hammer: :hammer: Testing the program :hammer: :hammer: :hammer:
 
 ```
 root@local:~/Desktop/LunaMoon/heap# ./print_frees
@@ -276,5 +276,15 @@ freeing every other chunk...
 [ prev - 0x00000000 ][ size - 0x00001011 ][ fd - 0x56872a08 ][ bk - 0xf7f947d8 ] - Chunk 0x56873628 - Freed
 [ prev - 0x00001010 ][ size - 0x00002010 ][ data buffer (0x56874640) ----> ... ] - Chunk 0x56874638 - In use
 ```
+Have fun :v: :v: :v:
 
+---
+**:muscle: References :muscle:**  
+
+all resources listed here :point_right: [LOL-Fav](http://location-href.com/lol-fav/)  :page_facing_up:
+
+:snowman: Contributed and maintained by [Luna-](https://twitter.com/art0flunam00n)  
+:snowflake: Powered by [Legion of LOL](http://location-href.com)
+
+---
 
