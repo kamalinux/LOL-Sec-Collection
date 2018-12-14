@@ -1,4 +1,3 @@
-
 ## The Heap
 > Heap Exploitation : from basic to noob. Oops!   
 :syringe: Learned and noted for everyone :syringe:
@@ -12,6 +11,7 @@
 | 01 | Simple Heap Overflow | simple heap overflow with function pointer overwrite | :paperclip: [click ](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/the-heap/notes/0x01_simple_heap_overflow.md) :paperclip:|
 | 02 | GOT Overwrite | overwriting global offset table entry via heap overflow| :paperclip: [click ](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/the-heap/notes/0x02_GOT_overwrite.md) :paperclip:|
 | 03 | Use-After-Free | understanding glibc's first fit behavior and use-after-free vulnerability  | :paperclip: [click ](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/the-heap/notes/0x03_use_after_free.md) :paperclip:|
+| 04 | Unlink | understanding dlmalloc's bins and unlink exploitation | :paperclip: [click](https://github.com/LunaM00n/LOL-Sec-Collection/blob/master/Notes/the-heap/notes/0x04_unlink.md) :paperclip:
 
 
 Have fun! :v: :v: :v:
