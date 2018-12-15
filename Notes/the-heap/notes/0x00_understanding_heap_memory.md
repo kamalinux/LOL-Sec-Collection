@@ -22,18 +22,9 @@ Implementation
 > some applications even create their own heap implementations!
 
 
-**:chart: Pseudo memory map :chart:**
+**:chart: Pseudo memory map :chart:**  
 
-+-----------------------------------------+  *0x00000000 - start of memory*  
-------------runtime memory  
-------------libraries ( libc )  
-------------elf executable  
-------------.text------------------------- *0x08048000 - start of .text* segment  
-------------.data  
-------------heap------------------------- *0xb7ff0000 - top of heap*  
-------------( free memory )  
-------------stack------------------------- *0xbfff0000 - top of stack*    
-+-----------------------------------------+  *0xffffffff - end of memory*  
+![enter image description here](https://github.com/LunaM00n/LOL-Sec-Collection/raw/master/Notes/the-heap/images/heap%20map.png)  
 
 **:chart: Heap allocation :chart:**
 
